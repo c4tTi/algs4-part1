@@ -18,20 +18,12 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     
     public RandomizedQueue(){
         size = 0;
+        capacity = 1;
         myArrayHolder = (Item[]) new Object[capacity];
-    
-    
-    
     }                 // construct an empty randomized queue
-    
-        private class Node{
-        Item item;
-        Node next;
-     }
     
     public boolean isEmpty(){return (size== 0);}                 // is the randomized queue empty?
     public int size(){return size;}// return the number of items on the randomized queue
-    
     
     public void enqueue(Item item)
     {
