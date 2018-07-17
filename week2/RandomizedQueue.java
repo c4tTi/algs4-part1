@@ -9,7 +9,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     
     //size - number of items inserted in array.
     private int size;
-    private Node first;
+    private int dequePointer;
     //capacity of the array : capacity > size.
     private int capacity;
     private Item[] myArrayHolder;
@@ -18,6 +18,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     
     public RandomizedQueue(){
         size = 0;
+        dequePointer = 0;
         capacity = 1;
         myArrayHolder = (Item[]) new Object[capacity];
     }                 // construct an empty randomized queue
@@ -28,14 +29,57 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     public void enqueue(Item item)
     {
         if (item == null){throw new java.lang.IllegalArgumentException();}
-    }           // add the item
+
+        if (size == capacity && (size - dequePointer) > capacity/2) 
+        {
+            this.increaseCapacity();
+        }
+        else if (size == capacity && (size - dequePointer) < capacity/4)
+        {
+            this.decreaseCapacity();
+        }
+        else if (size == capacity)
+        {
+            this.placeArrayToFront(new (Item[]) new Object[capacity];)
+        }
+        myArrayHolder[size++] = item;
     
+    }           // add the item
+
+    private void increaseCapacity()
+    {
+                
+
+    }
+    
+    private void placeArrayToFront(Item[] newArray){
+        int count = 0;
+
+        // hmmm iterator has to be used :).
+        for (Item i : myArrayHolder){
+            newArray[++count];
+        }
+
+    }
+
+
     public Item dequeue()
     {
         if (isEmpty()){throw new java.util.NoSuchElementException();}
+        //deque from front!? so you need to copy the array always back to the front?
+        
+        if ((this.size - this.dequePointer) < (capacity/4)){decreaseCapacity();}
+        
         return null;
     }                    // remove and return a random item
-    
+
+
+    //placing the array back to the front
+    private void decreaseCapacity(){
+        this.dequePointer = 0;
+    }
+
+
     public Item sample()
     {
         if (isEmpty()){throw new java.util.NoSuchElementException();}
