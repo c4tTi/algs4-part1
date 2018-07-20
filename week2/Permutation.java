@@ -5,7 +5,12 @@ import java.util.Iterator;
 public class Permutation {
     public static void main(String[] args){
         int k;
-        if (args.length > 0){
+        String fileName;
+        if (args.length == 1){
+        k = Integer.parseInt(args[0]);
+        }
+        else if (args.length > 1){
+        fileName = args[0];
         k = Integer.parseInt(args[0]);
         }
         else {
@@ -16,12 +21,20 @@ public class Permutation {
         
         RandomizedQueue<String> rQ = new RandomizedQueue<String>();
         
-        for (int i = 0; i < k; i ++){
+        while(!StdIn.isEmpty())
+        {
             rQ.enqueue(StdIn.readString());
         }
         
+        for (int i = 0; i < k; i ++){
+            StdOut.println(rQ.dequeue());
+        }
+        
+        
+        /*
         while(!rQ.isEmpty()){
         StdOut.println(rQ.dequeue());
-        }    
+        } 
+        */
     }
 }
