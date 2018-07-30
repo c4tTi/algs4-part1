@@ -16,6 +16,8 @@ public class Point implements Comparable<Point> {
     private final int x;     // x-coordinate of this point
     private final int y;     // y-coordinate of this point
 
+    
+    
     /**
      * Initializes a new point.
      *
@@ -60,6 +62,12 @@ public class Point implements Comparable<Point> {
      */
     public double slopeTo(Point that) {
         /* YOUR CODE HERE */
+        double xVal = that.x - this.x;
+        double yVal = that.y - this.y; 
+        
+        if (xVal == 0.0 && yVal == 0.0){ return Double.NEGATIVE_INFINITY;}
+        else if (xVal == 0.0){ return Double.POSITIVE_INFINITY; }
+        return (yVal / xVal);
     }
 
     /**
@@ -76,6 +84,11 @@ public class Point implements Comparable<Point> {
      */
     public int compareTo(Point that) {
         /* YOUR CODE HERE */
+        if (this.y < that.y) return -1;
+        else if (this.y > that.y) return 1;
+        else if (this.x < that.x) return -1;
+        else if (this.x > that.x) return 1;
+        else {return 0;}
     }
 
     /**
@@ -86,9 +99,20 @@ public class Point implements Comparable<Point> {
      */
     public Comparator<Point> slopeOrder() {
         /* YOUR CODE HERE */
+        return new BySlope();
     }
 
-
+    private class BySlope implements Comparator<Point>{
+        public int compare (Point v, Point w){
+            int compareToV = Point.this.compareTo(v);
+            int compareToW = Point.this.compareTo(w);
+            if (compareToV < compareToW) return -1;
+            else if(compareToV > compareToW) return 1;
+            else {return 0;}
+        }
+    }
+    
+    
     /**
      * Returns a string representation of this point.
      * This method is provide for debugging;
