@@ -27,18 +27,20 @@ public class BruteCollinearPoints {
    // also check that they are far away from eachother?
    private void bruteForce(){
        for (int i = 0; i < this.length; i ++){
+           if (points[i] == null) throw new IllegalArgumentException();
+           Point myPoint = points[i];
            for (int j = i+1; j < this.length; j++){
-               if (points[i] == null) throw new IllegalArgumentException();
-               double slopeToValue = points[i].slopeTo(points[j]);
+               if (points[j] == null) throw new IllegalArgumentException();
+               double slopeToValue = myPoint.slopeTo(points[j]);
                
                for (int y = j+1; y < this.length; y++){
-                   if(slopeToValue == points[i].slopeTo(points[y])) for (int z = y+1; z < this.length; z++){
-                       if(slopeToValue == points[i].slopeTo(points[z])) {
-                           
+               if (points[y] == null) throw new IllegalArgumentException();
+                   if(slopeToValue == myPoint.slopeTo(points[y])) for (int z = y+1; z < this.length; z++){
+                       if (points[z] == null) throw new IllegalArgumentException();
+                       if(slopeToValue == myPoint.slopeTo(points[z])) {
                            this.ls[this.lSCount++] = new LineSegment(points[i], points[y]); 
                        
                        }
-                   
                    }
                }
            }
