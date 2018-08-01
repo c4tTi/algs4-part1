@@ -10,6 +10,7 @@
 
 import java.util.Comparator;
 import edu.princeton.cs.algs4.StdDraw;
+import edu.princeton.cs.algs4.StdOut;
 
 public class Point implements Comparable<Point> {
 
@@ -67,6 +68,7 @@ public class Point implements Comparable<Point> {
         
         if (xVal == 0.0 && yVal == 0.0){ return Double.NEGATIVE_INFINITY;}
         else if (xVal == 0.0){ return Double.POSITIVE_INFINITY; }
+        else if (yVal == 0.0) {return +0.0;}
         return (yVal / xVal);
     }
 
@@ -84,11 +86,11 @@ public class Point implements Comparable<Point> {
      */
     public int compareTo(Point that) {
         /* YOUR CODE HERE */
-        if (this.y < that.y) return -1;
-        else if (this.y > that.y) return 1;
-        else if (this.x < that.x) return -1;
-        else if (this.x > that.x) return 1;
-        else {return 0;}
+        if (this.y < that.y)return -1;
+        if (this.y > that.y) return 1;
+        if (this.x < that.x) return -1;
+        if (this.x > that.x){return 1;
+        } else {return 0;}
     }
 
     /**
@@ -125,10 +127,41 @@ public class Point implements Comparable<Point> {
         return "(" + x + ", " + y + ")";
     }
 
+    private static boolean less(Point v, Point w){
+        return v.compareTo(w) < 0;
+    }
+    
+    
     /**
      * Unit tests the Point data type.
      */
     public static void main(String[] args) {
         /* YOUR CODE HERE */
+        
+        /*
+        Point p = new Point(2, 3);
+        
+        Point p2 = new Point(3,2);
+        
+        StdOut.println(p.slopeTo(p2));
+        Point pSame = new Point(3, 3);
+        
+        Point pSame2 = new Point(3,3);
+        
+        StdOut.println(p.compareTo(p2));
+        StdOut.println(pSame.compareTo(pSame2));
+        */
+        
+        Point p = new Point(32, 230);
+        
+        Point p2 = new Point(269,257);
+        Point p3 = new Point(270, 404);
+        
+        //StdOut.println(p.slopeTo(p2));
+        //StdOut.println(p2.slopeTo(p));
+        StdOut.println(p2.compareTo(p3));
+        
+        //StdOut.println(p.compareTo(p2,p3));
+            
     }
 }

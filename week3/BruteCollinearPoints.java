@@ -23,24 +23,42 @@ public class BruteCollinearPoints {
        return this.ls;
    }                // the line segments
 
-
+   private void checkNull(Point point){
+       if (points == null) throw new IllegalArgumentException();
+   }
+   
+   
    // also check that they are far away from eachother?
    private void bruteForce(){
        for (int i = 0; i < this.length; i ++){
-           if (points[i] == null) throw new IllegalArgumentException();
-           Point myPoint = points[i];
-           for (int j = i+1; j < this.length; j++){
-               if (points[j] == null) throw new IllegalArgumentException();
-               double slopeToValue = myPoint.slopeTo(points[j]);
+           checkNull(points[i]);
+           
+           Point myPoint1 = points[i];
+           
+           for (int j = 0; j < this.length; j++){
+               checkNull(points[j]);
                
-               for (int y = j+1; y < this.length; y++){
-               if (points[y] == null) throw new IllegalArgumentException();
-                   if(slopeToValue == myPoint.slopeTo(points[y])) for (int z = y+1; z < this.length; z++){
-                       if (points[z] == null) throw new IllegalArgumentException();
-                       if(slopeToValue == myPoint.slopeTo(points[z])) {
-                           this.ls[this.lSCount++] = new LineSegment(points[i], points[y]); 
+               Point myPoint2 = points[j];
+               double slopeToValue = myPoint1.slopeTo(myPoint2);
+               
+               if (myPoint1.compareTo( myPoint2)<0){
+               for (int y = 0; y < this.length; y++){
+                   checkNull(points[y]);
+                   
+                   Point myPoint3 = points[y];
+                   
+                   if(slopeToValue == myPoint1.slopeTo(myPoint3) && myPoint2.compareTo( myPoint3)<0)
+                       {for (int z = 0; z < this.length; z++){
                        
+                       checkNull(points[z]);
+                       
+                       Point myPoint4 = points[z];
+                       
+                       if(slopeToValue == myPoint1.slopeTo(myPoint4) && myPoint3.compareTo(myPoint4) < 0) {
+                           this.ls[this.lSCount++] = new LineSegment(myPoint1, myPoint4); 
                        }
+                       }
+                   }
                    }
                }
            }
