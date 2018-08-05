@@ -152,6 +152,13 @@ public class Point implements Comparable<Point> {
         StdOut.println(pSame.compareTo(pSame2));
         */
         
+        int i = 0;
+        
+        StdOut.println(i++);
+        StdOut.println(i);
+        StdOut.println(++i);
+        StdOut.println(i);
+        
         Point p = new Point(32, 230);
         
         Point p2 = new Point(269,257);
