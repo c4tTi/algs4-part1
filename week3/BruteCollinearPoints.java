@@ -1,6 +1,5 @@
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdIn;
-import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,6 +63,8 @@ public class BruteCollinearPoints {
    
    }
 
+
+   /*
    public static void main(String[] args) {
        String fileName = args[0];
     
@@ -92,18 +93,17 @@ public class BruteCollinearPoints {
         points = new Point[length];
 
         while((line = bufferedReader.readLine()) != null) {
-            //System.out.println(line);
 
             String[] output = line.split("\\s+");
 
             for (String o : output){
 
-                System.out.println(o);
+                StdOut.println(o);
 
                 
                 if(o != null && !o.isEmpty()){
                     int i = Integer.parseInt(o);
-                    //System.out.println(i);
+
 
                     if (!firstSet){
                         first = i;
@@ -113,7 +113,7 @@ public class BruteCollinearPoints {
                         firstSet = false;
     
                         points[count++] = new Point(first,second);
-                        System.out.println("point created" + first + ", " + second );
+                        StdOut.println("point created" + first + ", " + second );
                     }
                 }
                 
@@ -138,23 +138,23 @@ public class BruteCollinearPoints {
         bufferedReader.close();         
     }
     catch(FileNotFoundException ex) {
-        System.out.println(
+        StdOut.println(
             "Unable to open file '" + 
             fileName + "'");                
     }
     catch(IOException ex) {
-        System.out.println(
+        StdOut.println(
             "Error reading file '" 
             + fileName + "'");                  
         // Or we could just do this: 
         // ex.printStackTrace();
     }
     finally{
-        System.out.println("hmmm");
+        StdOut.println("hmmm");
     }
 
    }
-   
+   */
    
    // also check that they are far away from eachother?
    private void bruteForce(){
@@ -166,13 +166,13 @@ public class BruteCollinearPoints {
 
        for (int i = 0; i < this.length; i ++){
            
-           StdOut.println("-1");
+           //StdOut.println("-1");
            
            Point myPoint1 = points[i];
            
            for (int j = 0; j < this.length; j++){
              
-               StdOut.println("--2");
+               //StdOut.println("--2");
                Point myPoint2 = points[j];
                
                double slopeToValue = myPoint1.slopeTo(myPoint2);
@@ -181,19 +181,19 @@ public class BruteCollinearPoints {
                if (comparePoints(myPoint1, myPoint2)){ //&& myPoint1 != myPoint2
                for (int y = 0; y < this.length; y++){
                    
-                       StdOut.println("---3");
+                    //StdOut.println("---3");
                    
                    Point myPoint3 = points[y];
                    
                    if(slopeToValue == myPoint1.slopeTo(myPoint3) && comparePoints(myPoint2, myPoint3)) // && myPoint2 != myPoint3 && myPoint1 != myPoint3
                        {for (int z = 0; z < this.length; z++){
                        
-                       StdOut.println("----4");
+                       //StdOut.println("----4");
                        
                        Point myPoint4 = points[z];
                        
                        if(slopeToValue == myPoint1.slopeTo(myPoint4) && comparePoints(myPoint3, myPoint4)) { // && myPoint3 != myPoint 4 && myPoint1 != myPoint4 && myPoint2 != myPoint4
-                           StdOut.println("new segment");
+                           //StdOut.println("new segment");
                            this.ls[this.lSCount] = new LineSegment(myPoint1, myPoint4); 
                            this.lSCount++;
                        }

@@ -86,11 +86,11 @@ public class Point implements Comparable<Point> {
      */
     public int compareTo(Point that) {
         /* YOUR CODE HERE */
-        if (this.y < that.y)return -1;
+        if (this.y < that.y) return -1;
         if (this.y > that.y) return 1;
         if (this.x < that.x) return -1;
-        if (this.x > that.x){return 1;
-        } else {return 0;}
+        if (this.x > that.x) return 1;
+        return 0;
     }
 
     /**
@@ -106,11 +106,11 @@ public class Point implements Comparable<Point> {
 
     private class BySlope implements Comparator<Point>{
         public int compare (Point v, Point w){
-            int compareToV = Point.this.compareTo(v);
-            int compareToW = Point.this.compareTo(w);
+            double compareToV = Point.this.slopeTo(v);
+            double compareToW = Point.this.slopeTo(w);
             if (compareToV < compareToW) return -1;
-            else if(compareToV > compareToW) return 1;
-            else {return 0;}
+            if (compareToV > compareToW) return 1;
+            return 0;
         }
     }
     
@@ -159,14 +159,27 @@ public class Point implements Comparable<Point> {
         StdOut.println(++i);
         StdOut.println(i);
         
-        Point p = new Point(32, 230);
+        Point p = new Point(459, 297);
         
-        Point p2 = new Point(269,257);
-        Point p3 = new Point(270, 404);
+        Point q = new Point(459, 297);
+        Point r = new Point(172, 319);
         
         //StdOut.println(p.slopeTo(p2));
         //StdOut.println(p2.slopeTo(p));
-        StdOut.println(p2.compareTo(p3));
+        StdOut.println(p.compareTo(q));
+        StdOut.println(p.compareTo(r));
+
+        StdOut.println(p.slopeOrder().compare(q, r));
+
+        Point p2= new Point(137, 397);
+        Point q2= new Point(59, 398);
+        Point r2= new Point(218, 4);
+
+        StdOut.println(p2.slopeOrder().compare(q2, r2));
+
+
+
+        //StdOut.println(p.compare(q,r));
         
         //StdOut.println(p.compareTo(p2,p3));
             
