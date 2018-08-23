@@ -83,7 +83,7 @@ public class FastCollinearPoints {
                 }    
             }
 
-$
+
 
             this.points = points;
    }     // finds all line segments containing 4 or more points
