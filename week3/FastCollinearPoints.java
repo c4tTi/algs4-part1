@@ -15,33 +15,76 @@ public class FastCollinearPoints {
             for (int i = 0; i < points.length; i++){
                     checkNull(points[i]);
                 }
-                //how to use natural sort?
-            StdOut.println("notsorted:");
-            for(Point p : points){
-                StdOut.println(p);
-            }
-            
 
             Arrays.sort(points);
-            
-
-            StdOut.println("natural sort:");
-            for(Point p : points){
-                StdOut.println(p);
+            for (int i = 1; i < points.length; i++){
+                if (points[i-1].compareTo(points[i]) == 0){throw new java.lang.IllegalArgumentException();}
             }
 
-
-            StdOut.println("slope order sort");
+  /*          
             Point myPoint = points[0];
             Arrays.sort(points, myPoint.slopeOrder());
             for(Point p : points){
                 StdOut.println(myPoint.slopeTo(p));
                 StdOut.println(p);
             }
-            //natural sort first to check for same points twice.
-            //how to use it again?         
-            this.points = points;
+
+            Arrays.sort(points);
+
+            //same?
+            Arrays.sort(points, myPoint.slopeOrder());
+            for(Point p : points){
+                StdOut.println(myPoint.slopeTo(p));
+                StdOut.println(p);
+            }
+
+*/
+
+            /*
+
+            StdOut.println("natural sort:");
+            for(Point p : points){
+                StdOut.println(p);
+            }
+
+            StdOut.println("slope order sort");
+            Point myPoint = points[0];
             
+            Arrays.sort(points, myPoint.slopeOrder());
+            for(Point p : points){
+                StdOut.println(myPoint.slopeTo(p));
+                StdOut.println(p);
+            }
+
+            this.points = points;
+
+            
+            for (int i = 0; i < points.length; i++){
+                Arrays.sort(points);
+
+
+            }
+*/
+
+            //Natural Sort first! - then sort with slopeOrder or integrate the two within eachother?
+            for (int i = 0; i < points.length; i++){
+                Arrays.sort(points);
+                Point myPoint = points[i];
+                Arrays.sort(points, myPoint.slopeOrder());
+                    //StdOut.println("-----------");
+                double mySlopeTemp = ;
+                for (Point p : points){
+                    //StdOut.println(myPoint.slopeTo(p));
+                    //StdOut.println(p);
+                    //myPoint.slopeTo(p)
+                    
+
+                }    
+            }
+
+
+
+            this.points = points;
    }     // finds all line segments containing 4 or more points
    
    public int numberOfSegments(){
@@ -92,11 +135,13 @@ public static void main(String[] args) {
 
     // print and draw the line segments
     FastCollinearPoints collinear = new FastCollinearPoints(points);
+    /*
     for (LineSegment segment : collinear.segments()) {
         StdOut.println(segment);
         segment.draw();
     }
     StdDraw.show();
+    */
 }
 
 
