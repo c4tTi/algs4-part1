@@ -72,7 +72,7 @@ public class FastCollinearPoints {
                 Point myPoint = points[i];
                 Arrays.sort(points, myPoint.slopeOrder());
                     //StdOut.println("-----------");
-                double mySlopeTemp = ;
+                double mySlopeTemp = 0.0;
                 for (Point p : points){
                     //StdOut.println(myPoint.slopeTo(p));
                     //StdOut.println(p);
