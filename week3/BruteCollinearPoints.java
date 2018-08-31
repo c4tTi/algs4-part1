@@ -14,6 +14,7 @@ public class BruteCollinearPoints {
 
    private List<LineSegment> aLS;
 
+   
 
    public BruteCollinearPoints(Point[] points){
        if (points == null){throw new java.lang.IllegalArgumentException();}
